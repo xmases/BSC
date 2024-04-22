@@ -19,3 +19,13 @@ def froute(a, b, frames):
         frate.append(x / frames)
 
     return defc, frate
+
+froute_list = froute(cordsa, cordsb, sys.argv[5])
+defc, frate, pos = froute_list[0], froute_list[1], cordsa
+
+with open("cords.txt" "w") as f:
+    for i in range(sys.argv[5]) :
+        for y in range(len(pos)) :
+            pos[i] += frate[i]
+        f.write("cords = ["+pos[0]+", "+pos[1]+", "+i+"]")
+
