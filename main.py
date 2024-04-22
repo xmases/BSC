@@ -5,7 +5,7 @@ while cnt != 4:
     cnt += 1
     argv.append(int(sys.argv[cnt]))
 
-cordsa, cordsb = argv[0:2], argv[2:4]
+cordsa, cordsb, frames = argv[0:2], argv[2:4], int(sys.argv[5])
 
 def froute(a, b, frames):
     defc, frate = [], []
@@ -20,12 +20,12 @@ def froute(a, b, frames):
 
     return defc, frate
 
-froute_list = froute(cordsa, cordsb, sys.argv[5])
+froute_list = froute(cordsa, cordsb, frames)
 defc, frate, pos = froute_list[0], froute_list[1], cordsa
 
-with open("cords.txt" "w") as f:
-    for i in range(sys.argv[5]) :
+with open("cords.txt", "w") as f:
+    for i in range(frames) :
         for y in range(len(pos)) :
-            pos[i] += frate[i]
-        f.write("cords = ["+pos[0]+", "+pos[1]+", "+i+"]")
+            pos[y] += frate[y]
+        f.write("cords = ["+str(pos[0])+", "+str(pos[1])+", "+str(i+1)+"] \n")
 
